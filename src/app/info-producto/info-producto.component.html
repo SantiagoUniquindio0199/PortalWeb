@@ -1,0 +1,111 @@
+<nav class="navbar  navbar-dark p-3 mb-2 bg-dark text-white" *ngIf="menu === false">
+  <div class="container">
+    <div class="navbar-brand"><a class="nav-link navbar-brand btn btn-dark" routerLink="../principal/">Home</a></div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../crearUsuario/new">Registrarse</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../login/">Ingresar</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar  navbar-dark p-3 mb-2 bg-dark text-white" *ngIf="menu === true">
+  <div class="container">
+    <div class="navbar-brand">¡Bienvenido a nuestro portal web!</div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../principalUser">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../carritoProd">Carrito</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../crearUsuario/{{idUser}}">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../login">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <section>
+      <div class="container text-center mt-5 bg-light text-dark border border-info">
+        <div class="row">
+          <div class="col">
+            <label>Nombre:</label><br/>
+            <label id="nombre"></label>
+          </div>
+          <div class="col">
+            <label>Referencia:</label><br/>
+            <label id="referencia"></label>
+          </div>
+          <div class="col">
+            <label>Tipo:</label><br/>
+            <label id="tipo"></label>
+          </div>
+          <div class="col">
+            <label>Material:</label><br/>
+            <label id="material"></label>
+          </div>
+          <div class="col">
+            <label>Color:</label><br/>
+            <label id="color"></label>
+          </div>
+          <div class="col">
+            <label>Peso(gramos):</label><br/>
+            <label id="peso"></label>
+          </div>
+        </div><br/>
+
+        <div class="row">
+          <div class="col">
+            <label>Dimensiones (cm)</label><br/>
+            <label>Alto:</label>
+            <label id="alto"></label>
+            <label> - </label>
+            <label>Ancho:</label>
+            <label id="ancho"></label>
+            <label> - </label>
+            <label>Profundidad:</label>
+            <label id="profundidad"></label>
+          </div>
+          <div class="col">
+            <label>Descripcion:</label><br/>
+            <label id="descripcion"></label>
+          </div>
+        </div><br/>
+
+        <div class="row">
+          <div class="col">
+
+          </div><br/>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label>Foto</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <img [width]="150" [height]="150" [src]="miFoto">
+          </div>
+        </div><br/>
+
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-primary" (click)="agg()">Agregar</button>
+          </div>
+        </div><br/>
+
+      </div>
+    </section>
+  </div>
+</div><br /><br />

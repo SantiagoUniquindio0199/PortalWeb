@@ -1,0 +1,34 @@
+<nav class="navbar  navbar-dark p-3 mb-2 bg-dark text-white">
+  <div class="container">
+    <div class="navbar-brand">¡Bienvenido a nuestro portal web!</div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../principalUser">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../carritoProd">Carrito</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../crearUsuario/{{id}}/2">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../login">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div>
+  <div class="card-columns" style="margin: 20px">
+    <div class="card" *ngFor="let result of productos; let i = index;" routerLink="../infoProducto/{{productos[i].id}}/2">
+      <img class="card-img-top" width="239px" height="180px" src="{{result.foto}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{result.nombre}}</h5>
+        <p class="card-text">{{result.descripcion}}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">{{result.referencia}}</small>
+      </div>
+    </div>
+  </div>
+</div>

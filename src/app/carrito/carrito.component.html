@@ -1,0 +1,47 @@
+<nav class="navbar  navbar-dark p-3 mb-2 bg-dark text-white">
+  <div class="container">
+    <div class="navbar-brand">¡Bienvenido a nuestro portal web!</div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../principalUser">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../carritoProd">Carrito</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../crearUsuario/{{idUser}}/2">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../login">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<h2 class="text-center text-danger">Carrito de compras</h2>
+
+<div *ngIf="mensaje === false">
+  <div>
+    <div class="card-columns" style="margin: 20px">
+      <div class="card" *ngFor="let result of productosCarrito;">
+        <div class="card-body">
+          <div class="card-header">
+            <h5 class="card-title text-center">{{result.nombre}}</h5>
+          </div>
+          <p class="card-text text-center">Cantidad: {{result.cantidad}}</p>
+          <p class="card-text text-center">Precio: ${{result.precio}}</p>
+          <p class="card-text text-center text-success">Disponible</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button type="button" class="btn btn-primary text-center" style="margin-left:34%" routerLink="../principalUser">Continuar compra</button>
+    <button type="button" class="btn btn-success text-center" style="margin-left:10%" routerLink="../listaProd">Efectuar Compra</button>
+  </div><br />
+</div>
+
+<div *ngIf="mensaje === true">
+  <h2 class="text-center text-danger">No se han agregado productos</h2>
+</div>

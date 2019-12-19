@@ -1,0 +1,94 @@
+<nav class="navbar  navbar-dark p-3 mb-2 bg-dark text-white">
+  <div class="container">
+    <div class="navbar-brand">¡Bienvenido a nuestro portal web!</div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../principalUser">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../carritoProd">Carrito</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../crearUsuario/{{idUser}}/2">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../login">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav><br />
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <section>
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Descripcion de la venta</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Referencia: {{refe}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Valor: {{valor}}</th>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <section>
+      <div class="container text-center mt-5 bg-light text-dark border border-info">
+        <form name="formulario" [formGroup]="form">
+
+          <div class="row">
+            <div class="col">
+              <label>Nombre y Apellidos</label>
+              <input formControlName="nombre" [(ngModel)]="compra.nombre" name="nombre" type="text" class="form-control">
+            </div>
+
+            <div class="col">
+              <label>Numero de la Tarjeta</label>
+              <input formControlName="numero" [(ngModel)]="compra.numero" name="numero" type="text" class="form-control">
+            </div>
+
+            <div class="col">
+              <label>Codigo de Seguridad</label>
+              <input [(ngModel)]="compra.codigo" formControlName="codigo" name="codigo" type="text" class="form-control">
+            </div>
+          </div><br/>
+
+          <div class="row">
+            <div class="col">
+              <label>Fecha de Expiracion</label>
+              <input [(ngModel)]="compra.fecha" formControlName="fecha" name="fecha" type="text" placeholder="01/01/1999" class="form-control">
+            </div>
+
+            <div class="col">
+              <label>Cuotas</label>
+              <input [(ngModel)]="compra.cuotas" formControlName="cuotas" name="cuotas" type="text" class="form-control">
+            </div>
+          </div><br/>
+
+          <input [(ngModel)]="compra.cli" formControlName="cli" name="cli" type="hidden">
+          <input [(ngModel)]="compra.pro" formControlName="pro" name="pro" type="hidden">
+          <input [(ngModel)]="compra.pre" formControlName="pre" name="pre" type="hidden">
+          <input [(ngModel)]="compra.numOrden" formControlName="numOrden" name="numOrden" type="hidden">
+
+          <div class="row">
+            <div class="col">
+              <button [disabled]="!form.valid" class="form-control" (click)="realizarPago()" class="btn btn-primary" type="submit">Aceptar</button>
+            </div>
+          </div>
+
+          <div><br/></div><br/>
+        </form>
+      </div>
+    </section>
+  </div><br/><br />
+</div>

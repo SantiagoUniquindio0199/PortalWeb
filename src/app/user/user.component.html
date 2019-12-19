@@ -1,0 +1,188 @@
+<nav *ngIf="id=='new'" class="navbar-dark p-3 bg-dark text-white">
+  <div class="container">
+      <h2 class="text-center">¡Registrate en nuestro portal!</h2>
+  </div>
+</nav>
+
+<nav *ngIf="id!=='new' && menu == false" class="navbar  navbar-dark p-3 mb-2 bg-dark text-white">
+  <div class="container">
+    <div class="navbar-brand">¡Bienvenido Administrador!</div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../principalAdmin">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../clientesAdm/">Clientes</a>
+      </li>
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="nav-link navbar-brand btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Productos
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item text-dark" routerLink="../../../registrarProducto/new">Registrar</a>
+          <a class="dropdown-item text-dark" routerLink="../../../productosAdm/">Lista</a>
+          <a class="dropdown-item text-dark" routerLink="../../../preciosProducto/">Precios</a>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="nav-link navbar-brand btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reportes
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item text-dark" routerLink="../../../reporteVenta">Ventas</a>
+          <a class="dropdown-item text-dark" routerLink="../../../">Productos</a>
+          <a class="dropdown-item text-dark" routerLink="../../../">Compras</a>
+        </div>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../crearUsuario/{{idAdmin}}">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../login">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar  navbar-dark p-3 mb-2 bg-dark text-white" *ngIf="id!=='new' && menu == true" >
+  <div class="container">
+    <div class="navbar-brand">¡Bienvenido a nuestro portal web!</div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../principalUser">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../carritoProd">Carrito</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../crearUsuario/{{id}}">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../../../login">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <section>
+      <div class="container text-center mt-5 bg-light text-dark border border-info" style=" border-radius: 20px;">
+        <form name="formulario" [formGroup]="registerForm">
+
+          <div class="row">
+            <div class="col">
+              <label>Nombre completo</label>
+              <input formControlName="nombre" [(ngModel)]="user.nombre" name="nombre" type="text" class="form-control">
+            </div>
+
+            <div class="col">
+              <label>Tipo de documento</label>
+              <select formControlName="tipo" [(ngModel)]="user.tipo" name="tipo" class="form-control">
+                <option>TI</option>
+                <option>CC</option>
+                <option>CE</option>
+                <option>PASAPORTE</option>
+              </select>
+            </div>
+
+            <div class="col">
+              <label>Documento</label>
+              <input formControlName="documento" [(ngModel)]="user.documento"  name="documento" type="text" class="form-control">
+                <div *ngIf="!documento.invalid==false && !documento.errors.required==true">Solo Numeros</div>
+            </div>
+          </div><br/>
+
+          <div class="row">
+            <div class="col">
+              <label>Telefono de residencia</label>
+              <input [(ngModel)]="user.telResidencia" formControlName="telResidencia" name="telResidencia" type="text" class="form-control">
+                <div *ngIf="!telResidencia.invalid==false && !telResidencia.errors.required==true">Solo Numeros</div>
+            </div>
+
+            <div class="col">
+              <label>Telefono celular</label>
+              <input [(ngModel)]="user.telCelular" formControlName="telCelular" name="telCelular" type="text" class="form-control">
+                <div *ngIf="!telCelular.invalid==false && !telCelular.errors.required==true">Solo Numeros</div>
+            </div>
+
+            <div class="col">
+              <label>Direccion</label>
+              <input [(ngModel)]="user.direccion" formControlName="direccion" name="direccion" type="text" class="form-control">
+            </div>
+          </div><br/>
+
+          <div class="row">
+            <div class="col">
+              <label>Ciudad de residencia</label>
+              <input [(ngModel)]="user.ciudad" formControlName="ciudad" name="ciudad" type="text" class="form-control">
+              <div *ngIf="!ciudad.invalid==false && !ciudad.errors.required==true">Solo letras</div>
+            </div>
+
+            <div class="col">
+              <label>Departamento</label>
+              <input [(ngModel)]="user.departamento" formControlName="departamento" name="departamento" type="text" class="form-control">
+              <div *ngIf="!departamento.invalid==false && !departamento.errors.required==true">Solo letras</div>
+            </div>
+
+            <div class="col">
+              <label>Pais</label>
+              <input [(ngModel)]="user.pais" formControlName="pais" name="pais" type="text" class="form-control">
+              <div *ngIf="!pais.invalid==false && !pais.errors.required==true">Solo letras</div>
+            </div>
+          </div><br />
+
+          <div class="row">
+            <div class="col">
+              <label>Profesion</label>
+              <input [(ngModel)]="user.profesion" formControlName="profesion" name="profesion" type="text" class="form-control" >
+              <div *ngIf="!profesion.invalid==false">Solo letras</div>
+            </div>
+
+            <div class="col">
+              <label>Correo</label>
+              <input [(ngModel)]="user.correo" formControlName="correo" name="correo" type="email" class="form-control" placeholder="ejemplo@gmail.com" [disableControl]='bloquear'>
+              <div *ngIf="!correo.invalid==false && !correo.errors.required==true">Correo invalido</div>
+            </div>
+
+            <div class="col">
+              <label>Contraseña</label>
+              <input [(ngModel)]="user.contrasena" formControlName="contrasena" name="pass" type="password" class="form-control" [disableControl]='bloquear'>
+                <div *ngIf="!contrasena.invalid==false && !contrasena.errors.required==true">Minimo seis caracteres</div>
+            </div>
+          </div><br/>
+
+          <div class="row">
+            <div class="col">
+              <label>Tipo de persona</label>
+              <select [(ngModel)]="user.persona" formControlName="persona" (ngModelChange)="habilitarNit()" id="per" name="persona" class="form-control" >
+                <option>Natural</option>
+                <option>Juridica</option>
+              </select>
+            </div>
+
+            <div class="col">
+              <label>NIT</label>
+              <input [(ngModel)]="user.nit" formControlName="nit" [disableControl]='!listo' name="nit" type="text" class="form-control" >
+              <div *ngIf="!nit.invalid==false && !nit.errors.required==true">Solo Numeros</div>
+            </div>
+
+            <input [(ngModel)]="user.rol" formControlName="rol" name="rol" type="hidden" >
+
+          </div><br/>
+
+          <div class="row">
+            <div class="col">
+              <button (click)="volver()" class="btn btn-primary">Volver</button>
+            </div>
+            <div class="col">
+              <button [disabled]="!registerForm.valid" class="form-control" (click)="aceptar()" class="btn btn-primary" type="submit">Aceptar</button>
+            </div>
+          </div>
+
+          <div><br/></div><br/>
+        </form>
+      </div>
+    </section>
+  </div><br/><br />
+</div>

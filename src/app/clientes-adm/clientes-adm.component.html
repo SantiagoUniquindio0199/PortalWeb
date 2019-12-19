@@ -1,0 +1,159 @@
+<nav class="navbar  navbar-dark p-3 mb-2 bg-dark text-white">
+  <div class="container">
+    <div class="navbar-brand">¡Bienvenido Administrador!</div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../principalAdmin">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../clientesAdm/">Clientes</a>
+      </li>
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="nav-link navbar-brand btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Productos
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item text-dark" routerLink="../registrarProducto/new">Registrar</a>
+          <a class="dropdown-item text-dark" routerLink="../productosAdm/">Lista</a>
+          <a class="dropdown-item text-dark" routerLink="../preciosProducto/">Precios</a>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="nav-link navbar-brand btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reportes
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item text-dark" routerLink="../reporteVenta">Ventas</a>
+          <a class="dropdown-item text-dark" routerLink="../">Productos</a>
+          <a class="dropdown-item text-dark" routerLink="../">Compras</a>
+        </div>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../crearUsuario/{{idAdmin}}/1">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../login">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+    <div class="row justify-content-md-center">
+      <section>
+        <div class="container text-center mt-5 bg-light text-dark border border-info" style=" border-radius: 20px;" >
+          <form name="formulario" [formGroup]="registerForm">
+
+            <div class="row">
+              <div class="col">
+                <label>Nombre completo</label>
+                <input formControlName="nombre" [(ngModel)]="user.nombre" name="nombre" type="text" class="form-control">
+              </div>
+
+              <div class="col">
+                <label>Tipo documento</label>
+                <select formControlName="tipo" [(ngModel)]="user.tipo" name="tipo" class="form-control" >
+                  <option></option>
+                  <option>TI</option>
+                  <option>CC</option>
+                  <option>CE</option>
+                  <option>PASAPORTE</option>
+                </select>
+              </div>
+
+              <div class="col">
+                <label>Documento</label>
+                <input formControlName="documento" [(ngModel)]="user.documento"  name="documento" type="text" class="form-control">
+              </div>
+
+              <div class="col">
+                <label># residencia</label>
+                <input [(ngModel)]="user.telResidencia" formControlName="telResidencia" name="telResidencia" type="text" class="form-control">
+              </div>
+
+              <div class="col">
+                <label># celular</label>
+                <input [(ngModel)]="user.telCelular" formControlName="telCelular" name="telCelular" type="text" class="form-control">
+              </div>
+
+              <div class="col">
+                <label>Direccion</label>
+                <input [(ngModel)]="user.direccion" formControlName="direccion" name="direccion" type="text" class="form-control">
+              </div>
+
+              <div class="col">
+                <label>Ciudad residencia</label>
+                <input [(ngModel)]="user.ciudad" formControlName="ciudad" name="ciudad" type="text" class="form-control">
+              </div>
+            </div><br/>
+
+            <div class="row">
+
+              <div class="col">
+                <label>Departamento</label>
+                <input [(ngModel)]="user.departamento" formControlName="departamento" name="departamento" type="text" class="form-control">
+              </div>
+
+              <div class="col">
+                <label>Pais</label>
+                <input [(ngModel)]="user.pais" formControlName="pais" name="pais" type="text" class="form-control">
+              </div>
+
+              <div class="col">
+                <label>Profesion</label>
+                <input [(ngModel)]="user.profesion" formControlName="profesion" name="profesion" type="text" class="form-control" >
+              </div>
+
+              <div class="col">
+                <label>Correo</label>
+                <input [(ngModel)]="user.correo" formControlName="correo" name="correo" type="email" class="form-control" placeholder="ejemplo@gmail.com" >
+              </div>
+
+              <div class="col">
+                <label>Tipo de persona</label>
+                <select [(ngModel)]="user.persona" formControlName="persona" (ngModelChange)="habilitarNit()" id="per" name="persona" class="form-control" >
+                  <option></option>
+                  <option>Natural</option>
+                  <option>Juridica</option>
+                </select>
+              </div>
+
+              <div class="col">
+                <label>NIT</label>
+                <input [(ngModel)]="user.nit" formControlName="nit" [disableControl]='!listo' name="nit" type="text" class="form-control" >
+              </div>
+            </div><br />
+
+            <div class="row">
+              <div class="col">
+                <button class="form-control" (click)="buscar()" class="btn btn-primary" type="submit">Buscar</button>
+              </div>
+            </div>
+
+            <div><br/></div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+  <div class="container mt-5">
+    <table class="table table-bordered table-active" >
+      <thead>
+      <tr>
+        <th scope="col" class="text-center text-white">Documento</th>
+        <th scope="col" class="text-center text-white">Nombre</th>
+        <th scope="col" class="text-center text-white">Correo</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let result of resultadoBusqueda; let i = index" id="filas">
+      <tr (click)="eliminar(i)">
+        <td class="text-center text-white">{{result.documento}}</td>
+        <td class="text-center text-white">{{result.nombre}}</td>
+        <td class="text-center text-white">{{result.correo}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div><br />

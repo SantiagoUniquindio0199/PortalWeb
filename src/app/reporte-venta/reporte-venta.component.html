@@ -1,0 +1,39 @@
+<nav class="navbar  navbar-dark p-3 mb-2 bg-dark text-white">
+  <div class="container">
+    <div class="navbar-brand">¡Bienvenido Administrador!</div>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../principalAdmin">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../clientesAdm/">Clientes</a>
+      </li>
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="nav-link navbar-brand btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Productos
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item text-dark" routerLink="../registrarProducto/new">Registrar</a>
+          <a class="dropdown-item text-dark" routerLink="../productosAdm/">Lista</a>
+          <a class="dropdown-item text-dark" routerLink="../preciosProducto/">Precios</a>
+        </div>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="nav-link navbar-brand btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reportes
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item text-dark" routerLink="../reporteVenta">Ventas</a>
+          <a class="dropdown-item text-dark" routerLink="../">Productos</a>
+          <a class="dropdown-item text-dark" routerLink="../">Compras</a>
+        </div>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../crearUsuario/{{idAdmin}}/1">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-brand btn btn-dark" routerLink="../login">Cerrar sesion</a>
+      </li>
+    </ul>
+  </div>
+</nav>
